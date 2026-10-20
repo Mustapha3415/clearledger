@@ -10,6 +10,7 @@ import { AmountInput } from "@/components/shared/AmountInput";
 import { useWalletStore } from "@/store/wallet";
 import { DatePicker } from "@/components/ui/date-picker";
 import { getErrorMessage } from "@/lib/errors";
+import { SupportDiagnostics } from "@/components/shared/SupportDiagnostics";
 
 const invoiceContractID = process.env.NEXT_PUBLIC_INVOICE_CONTRACT_ID || "";
 
@@ -356,7 +357,10 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
           {error && (
             <div className="p-3 rounded bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-start gap-2">
               <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
-              <span className="font-mono">{error}</span>
+              <div>
+                <span className="font-mono">{error}</span>
+                <SupportDiagnostics error={error} contractId={invoiceContractID} />
+              </div>
             </div>
           )}
           <Button
@@ -403,7 +407,10 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
           {error && (
             <div className="p-3 rounded bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-start gap-2">
               <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
-              <span className="font-mono">{error}</span>
+              <div>
+                <span className="font-mono">{error}</span>
+                <SupportDiagnostics error={error} contractId={invoiceContractID} />
+              </div>
             </div>
           )}
           <div className="flex gap-3">
